@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:8080}
+spring:
+  datasource:
+    url:
+    username:
+    password:
+
+  jpa:
+    generate-ddl: true
+    #show-sql: true
+    hibernate:
+      ddl-auto: update
+
+    #https://stormy-anchorage-47630.herokuapp.com/
+
+
+   #email configuration for application.properties
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tech.blog.smtp@gmail.com
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
