@@ -1,18 +1,18 @@
 server:
-  port: ${PORT:8080}
+  port: 8080
+
+
 spring:
   datasource:
-    url:
-    username:
-    password:
+    url: jdbc.mysql://localhost:3306/bank
+    username: root
+    password: hbstudent
 
   jpa:
     generate-ddl: true
-    #show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
-    #https://stormy-anchorage-47630.herokuapp.com/
 
 
    #email configuration for application.properties

@@ -1,2 +1,2 @@
-**National Geography project by** : Jalil Ahmadov
+**Banking App by** : Jalil Ahmadov
 
