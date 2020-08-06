@@ -4,14 +4,14 @@ server:
 
 spring:
   datasource:
-    url: jdbc.mysql://localhost:3306/sport-news
+    url: jdbc:mysql://localhost:3306/sport-news
     username: root
     password: hbstudent
 
-  jpa:
-    generate-ddl: true
-    hibernate:
-      ddl-auto: create
+  #jpa:
+   # generate-ddl: true
+    #hibernate:
+     # ddl-auto: create
 
 
 

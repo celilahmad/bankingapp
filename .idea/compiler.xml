@@ -7,16 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bankingapp" />
+        <module name="sport-news" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bankingapp" target="1.8" />
+      <module name="sport-news" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="bankingapp" options="-parameters" />
+      <module name="sport-news" options="-parameters" />
     </option>
   </component>
 </project>
