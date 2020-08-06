@@ -1,2 +1,2 @@
-**Banking App by** : Jalil Ahmadov
+**Sport-News app by** : Jalil Ahmadov
 
