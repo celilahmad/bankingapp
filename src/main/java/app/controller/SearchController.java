@@ -10,6 +10,6 @@ public class SearchController {
 
     @PostMapping
     public String postSearch(String word){
-
+        return null;
     }
 }
