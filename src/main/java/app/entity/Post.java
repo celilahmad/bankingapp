@@ -4,6 +4,7 @@ package app.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,4 +26,7 @@ public class Post {
     private String date;
 
     private String premium;
+
+    @ManyToMany
+    private List<Category> category;
 }

@@ -3,9 +3,8 @@ package app.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,4 +17,7 @@ public class Category {
     private String name;
 
     private String path;
+
+    @ManyToMany(mappedBy = "category")
+    private List<Post> post;
 }
