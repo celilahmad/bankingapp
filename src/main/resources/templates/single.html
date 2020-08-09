@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html 	xmlns:th="http://www.thymeleaf.org"
+		lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,26 +103,9 @@
 
 							</div>
 							<div id="navbar" class="collapse navbar-collapse sidebar-offcanvas">
-								<ul class="nav navbar-nav">
+								<ul class="nav navbar-nav" th:each="category : ${categories}">
 									<li class="hidden"><a href="#page-top"></a></li>
-									<li><a class="page-scroll" href="category.html">Baseball</a></li>
-									<li><a class="page-scroll" href="category.html">Football</a></li>
-									<li><a class="page-scroll" href="category.html">Hockey</a></li>
-									<li><a class="page-scroll" href="#section-experience">Basketball</a></li>
-									<li><a class="page-scroll" href="#section-brand">Boxing</a></li>
-									<li><a class="page-scroll" href="#">Golf</a></li>
-									<li><a class="page-scroll" href="#">Tennis</a></li>
-									<li><a class="page-scroll" href="#section-product">Horse racing</a></li>
-									<li><a class="page-scroll" href="#">Track & Field</a></li>
-
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Action</a></li>
-											<li><a href="#">Another action</a></li>
-											<li><a href="#">Something else here</a></li>
-										</ul>
-									</li>
+									<li><a class="page-scroll" th:href="${category.path}" th:text="${category.name}"></a></li>
 								</ul>
 								<div class="pull-right">
 									<form class="navbar-form" role="search">
@@ -150,21 +134,14 @@
 				<div class="single_content_layout">
 					<div class="item feature_news_item">
 						<div class="item_img">
-							<img  class="img-responsive" src="/img/img-single.jpg" alt="Chania">
+							<img  class="img-responsive" th:src="${post.img}" alt="Chania">
 						</div><!--item_img--> 
 							<div class="item_wrapper">
 								<div class="news_item_title">
-									<h2><a href="#">Leo Messi is boss of the bosses in football world.</a></h2>
+									<h2><a href="#" th:text="${post.title}"></a></h2>
 								</div><!--news_item_title-->
-								<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
+								<div class="item_meta"><a href="#" th:text="${post.date}"></a> / <a href="#" th:text="${post.author}"></a></div>
 
-                                    <span class="rating">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-full"></i>
-									</span>
 
 									<div class="single_social_icon">
 										<a class="icons-sm fb-ic" href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
@@ -177,64 +154,27 @@
 
 									</div> <!--social_icon1-->
 
-									<div class="item_content">
-										Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-										<br /><br />
-										Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-										<br /><br />
-										Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam
-									</div><!--item_content-->
-                                    <div class="category_list">
-                                        <a href="#">Messi</a>
-                                        <a href="#">Leonel</a>
-                                        <a href="#">Bercelona</a>
-                                        <a href="#">Argentina</a>
-                                        <a href="#">Football</a>
-                                    </div><!--category_list-->
+									<div class="item_content" th:text="${post.header}"></div><!--item_content-->
+									<div class="item_content" th:text="${post.content}"></div>
 							</div><!--item_wrapper-->	
 					</div><!--feature_news_item-->
 					
 					<div class="single_related_news">
 					 <div class="single_media_title"><h2>Related News</h2></div>
 						<div class="media_wrapper">
-							<div class="media">
+							<div class="media" th:each="related : ${relatedPosts}">
 								<div class="media-left">
-									<a href="#"><img class="media-object" src="/img/img-list5.jpg" alt="Generic placeholder image"></a>
+									<a th:href="@{'/detail/' + ${related.id}}"><img class="media-object-related" th:src="${related.img}" alt="Generic placeholder image"></a>
 								</div><!--media-left-->
 								<div class="media-body">
-									<h4 class="media-heading"><a href="#">Machester United start the player
+									<h4 class="media-heading"><a th:href="@{'/detail/' + ${related.id}}" th:text="${related.title}">
 									</a></h4>
-									<div class="media_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-									<div class="media_content"><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
+									<div class="media_meta"><a href="#" th:text="${related.date}"></a> / <a href="#" th:text="${related.author}"></a></div>
+									<div class="media_content"><p th:text="${related.header}"></p>
                                     </div><!--media_content-->
 								</div><!--media-body-->
 							</div><!--media-->
 
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#"><img class="media-object" src="/img/img-list2.jpg" alt="Generic placeholder image"></a>
-                                </div><!--media-left-->
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">Machester United start the player
-                                    </a></h4>
-									<div class="media_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-                                    <div class="media_content"><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
-                                    </div><!--media_content-->
-                                </div><!--media-body-->
-                            </div><!--media-->
-
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#"><img class="media-object" src="/img/img-list3.jpg" alt="Generic placeholder image"></a>
-                                </div><!--media-left-->
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">Machester United start the player
-                                    </a></h4>
-									<div class="media_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-                                    <div class="media_content"><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
-                                    </div><!--media_content-->
-                                </div><!--media-body-->
-                            </div><!--media-->
 						</div><!--media_wrapper-->
 					</div><!--single_related_news-->
 
@@ -509,7 +449,8 @@
 					</div><!--media-->
 				</div><!--most_comment-->
 			</div>
-		</div>	   	
+		</div>
+	</div>
 </section><!--feature_category_section-->
 
 	<!-- Footer Section -->

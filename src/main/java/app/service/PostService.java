@@ -1,5 +1,6 @@
 package app.service;
 
+import app.entity.Category;
 import app.entity.Post;
 import app.repo.PostRepo;
 import org.springframework.data.domain.Page;
@@ -42,5 +43,20 @@ public class PostService {
                 .findAll(pageable);
 
 
+    }
+
+    public Post getPost(int id) {
+        return
+                postRepo
+                .findById(id).get();
+    }
+
+    public List<Post> relatedPosts(int id){
+        String category = getPost(id).getCategory().getName();
+        return postRepo.findAll()
+                .stream()
+                .filter(x -> x.getCategory().getName().equals(category))
+                .limit(3)
+                .collect(Collectors.toList());
     }
 }

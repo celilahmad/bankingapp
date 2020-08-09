@@ -135,7 +135,7 @@
 										</div> <!--item_img-->
 										<div class="item_title_date">
 											<div class="news_item_title">
-												<h2><a href="single.html" th:text="${news.title}"></a></h2>
+												<h2><a th:href="@{'/detail/' + ${news.id}}" th:text="${news.title}"></a></h2>
 											</div>
 											<div class="item_meta"><a href="#" th:text="${news.date}"></a> / <a href="#" th:text="${news.author}"></a></div>
 										</div><!--item_title_date-->
