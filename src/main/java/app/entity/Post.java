@@ -27,6 +27,9 @@ public class Post {
 
     private String premium;
 
-    @ManyToMany
-    private List<Category> category;
+    private String img;
+
+    @ManyToOne
+    private Category category;
+
 }

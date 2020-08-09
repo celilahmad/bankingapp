@@ -8,10 +8,10 @@ spring:
     username: root
     password: hbstudent
 
-  #jpa:
-   # generate-ddl: true
-    #hibernate:
-     # ddl-auto: update
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
 
 
 
