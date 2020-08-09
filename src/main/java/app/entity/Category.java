@@ -18,6 +18,4 @@ public class Category {
 
     private String path;
 
-    @OneToMany(mappedBy = "category")
-    private List<Post> posts;
 }

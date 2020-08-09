@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html 	xmlns:th="http://www.thymeleaf.org"
+		lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,8 +40,7 @@
 			<div class="top_ber">
 				<div class="row">
 					<div class="col-md-6">
-						<div class="top_ber_left">
-							20 August. Thursday 2015. 2:00 PM.
+						<div class="top_ber_left" th:text="${date}">
 						</div><!--top_ber_left-->
 					</div><!--col-md-6-->
 					<div class="col-md-6">
@@ -101,26 +101,9 @@
 
 							</div>
 							<div id="navbar" class="collapse navbar-collapse sidebar-offcanvas">
-								<ul class="nav navbar-nav">
-									<li class="hidden"><a href="#page-top"></a></li>
-									<li><a class="page-scroll" href="category.html">Baseball</a></li>
-									<li><a class="page-scroll" href="category.html">Football</a></li>
-									<li><a class="page-scroll" href="category.html">Hockey</a></li>
-									<li><a class="page-scroll" href="#section-experience">Basketball</a></li>
-									<li><a class="page-scroll" href="#section-brand">Boxing</a></li>
-									<li><a class="page-scroll" href="#">Golf</a></li>
-									<li><a class="page-scroll" href="#">Tennis</a></li>
-									<li><a class="page-scroll" href="#section-product">Horse racing</a></li>
-									<li><a class="page-scroll" href="#">Track & Field</a></li>
-
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Action</a></li>
-											<li><a href="#">Another action</a></li>
-											<li><a href="#">Something else here</a></li>
-										</ul>
-									</li>
+								<ul class="nav navbar-nav" th:each="categori : ${categories}">
+									<li class="hidden"><a href="#page-top" ></a></li>
+									<li><a class="page-scroll" th:href="${categori.path}" th:text="${categori.name}"></a></li>
 								</ul>
 								<div class="pull-right">
 									<form class="navbar-form" role="search">
@@ -146,157 +129,28 @@
 	<div class="container">   
 		<div class="row">
 		   	<div class="col-md-9">
-		   		<div class="row">								 
-					<div class="col-md-12">
-						<div class="feature_news_item category_item">
-                			<div class="item">
-								<div class="item_wrapper">
-									<div class="item_img">
-										<img class="img-responsive" src="/img/category.jpg" alt="Chania">
-									</div><!--item_img--> 
-									<div class="item_title_date">
-										<div class="news_item_title">
-											<h1><a href="single.html">Leo Messi is boss of the bosses in the football world omnis iste natus error .</a></h1>
-										</div><!--news_item_title-->
-										<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-									</div><!--item_title_date-->
-								</div><!--item_wrapper-->
-							    <div class="item_content">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim aut Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut...
-							    </div><!--item_content-->
-
-							</div><!--item-->               			 
-            			</div><!--feature_news_item-->
-					</div><!--col-md-6-->
-				</div>		
 				<div class="row">								 
-					<div class="col-md-6">
+					<div class="col-md-6" th:each="post : ${posts}">
 						<div class="feature_news_item">
 							<div class="item">
 								<div class="item_wrapper">
 									<div class="item_img">
-										<img class="img-responsive" src="/img/img-category.jpg" alt="Chania">
+										<img class="img-responsive" th:src="${post.img}" alt="Chania">
 									</div> <!--item_img-->
 									<div class="item_title_date">
 										<div class="news_item_title">
-											<h2><a href="single.html">Barcelona FC fix the special technique for goal machine</a></h2>
+											<h2><a th:href="@{'/detail/' + ${post.id}}" th:text="${post.title}"></a></h2>
 										</div>
-										<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
+										<div class="item_meta"><a href="#" th:text="${post.date}"></a> / <a href="#" th:text="${post.author}"></a></div>
 									</div><!--item_title_date-->
 								</div> <!--item_wrapper-->
-								<div class="item_content">Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+								<div class="item_content" th:text="${post.header}">
 								</div>
 
 							</div><!--item-->
 						</div><!--feature_news_item-->
 					</div><!--col-md-6-->
-						
-					<div class="col-md-6">
-						<div class="feature_news_item">
-							<div class="item">
-								<div class="item_wrapper">
-									<div class="item_img">
-										<img class="img-responsive" src="/img/img-category2.jpg" alt="Chania">
-									</div> <!--item_img-->
-									<div class="item_title_date">
-										<div class="news_item_title">
-											<h2><a href="single.html">England women fooball team ahed 1:0 Goal</a></h2>
-										</div>
-										<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-									</div><!--item_title_date-->
-								</div> <!--item_wrapper-->
-								<div class="item_content">Sed ut perspiciatis unde omnis iste natus error sit
-								</div>
 
-							</div><!--item-->
-						</div><!--feature_news_item-->
-					</div><!--col-md-6-->
-					
-					<div class="col-md-6">
-						<div class="feature_news_item">
-							<div class="item">
-								<div class="item_wrapper">
-									<div class="item_img">
-										<img class="img-responsive" src="/img/img-category3.jpg" alt="Chania">
-									</div> <!--item_img-->
-									<div class="item_title_date">
-										<div class="news_item_title">
-											<h2><a href="single.html">Neymar 4th goal in europian champion league</a></h2>
-										</div>
-										<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-									</div><!--item_title_date-->
-								</div> <!--item_wrapper-->
-								<div class="item_content">Sed ut perspiciatis unde omnis iste natus error sit
-								</div>
-
-							</div><!--item-->
-						</div><!--feature_news_item-->
-					</div><!--col-md-6-->
-					
-					<div class="col-md-6">
-						<div class="feature_news_item">
-							<div class="item">
-								<div class="item_wrapper">
-									<div class="item_img">
-										<img class="img-responsive" src="/img/img-category4.jpg" alt="Chania">
-									</div> <!--item_img-->
-									<div class="item_title_date">
-										<div class="news_item_title">
-											<h2><a href="single.html">Juventus players raise the voice for victory</a></h2>
-										</div>
-										<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-									</div><!--item_title_date-->
-								</div> <!--item_wrapper-->
-								<div class="item_content">Sed ut perspiciatis unde omnis iste natus error sit
-								</div>
-
-							</div><!--item-->
-						</div><!--feature_news_item-->
-					</div><!--col-md-6-->
-					
-					<div class="col-md-6">
-						<div class="feature_news_item">
-							<div class="item">
-								<div class="item_wrapper">
-									<div class="item_img">
-										<img class="img-responsive" src="/img/img-category5.jpg" alt="Chania">
-									</div> <!--item_img-->
-									<div class="item_title_date">
-										<div class="news_item_title">
-											<h2><a href="single.html">Rooney happy for 2 goals after long time</a></h2>
-										</div>
-										<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-									</div><!--item_title_date-->
-								</div> <!--item_wrapper-->
-								<div class="item_content">Sed ut perspiciatis unde omnis iste natus error sit
-								</div>
-
-							</div><!--item-->
-						</div><!--feature_news_item-->
-					</div><!--col-md-6-->
-					
-					<div class="col-md-6">
-						<div class="feature_news_item">
-							<div class="item">
-								<div class="item_wrapper">
-									<div class="item_img">
-										<img class="img-responsive" src="/img/img-category6.jpg" alt="Chania">
-									</div> <!--item_img-->
-									<div class="item_title_date">
-										<div class="news_item_title">
-											<h2><a href="single.html">Alexis Sanchez & Arsenal jointly champion the leage</a></h2>
-										</div>
-										<div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-									</div><!--item_title_date-->
-								</div> <!--item_wrapper-->
-								<div class="item_content">Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
-								</div>
-
-							</div><!--item-->
-						</div><!--feature_news_item-->
-					</div><!--col-md-6-->
-					
-
-												 
 				</div><!--row-->	
 		   	</div><!--col-md-9-->
 
@@ -480,7 +334,26 @@
 					</div><!--media-->
 				</div><!--most_comment-->
 			</div>
-		</div>	   	
+			<div class="row">
+				<div class="col-md-12">
+					<nav aria-label="Page navigation">
+						<ul class="pagination justify-content-start"  >
+							<a class="page-link" th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1}}">Previous</a>
+							<span th:unless="${currentPage > 1}"></span>
+							<div th:each="page : ${listTotalPages}">
+								<li class="page-item" ><a class="page-link" th:if="${page != currentPage}" th:href="@{'/page/' + ${page}}" th:text="${page}"></a></li>
+								<span  class="page-link" th:unless="${page != currentPage}" th:text="${page}"></span>
+							</div>
+							<li>
+								<a class="page-link" th:if="${currentPage != totalPages}" th:href="@{'/page/' + ${currentPage +1 }}">Next</a>
+								<span th:unless="${currentPage != totalPages}"></span>
+							</li>
+						</ul>
+					</nav>
+				</div><!-- end col -->
+			</div><!-- end row -->
+		</div>
+	</div>
 </section><!--feature_category_section-->
 
 	<!-- Footer Section -->

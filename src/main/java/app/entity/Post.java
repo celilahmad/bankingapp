@@ -29,7 +29,6 @@ public class Post {
 
     private String img;
 
-    @ManyToOne
-    private Category category;
+    private String category;
 
 }

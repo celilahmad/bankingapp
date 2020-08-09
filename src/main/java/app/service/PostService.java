@@ -41,7 +41,13 @@ public class PostService {
         Pageable pageable = PageRequest.of(pageNumber - 1, 14);
         return postRepo
                 .findAll(pageable);
+    }
 
+    public Page<Post> listByCategory(String category, int pageNumber){
+        Sort sort = Sort.by("id").ascending();
+        Pageable pageable = PageRequest.of(pageNumber - 1, 2, sort);
+        return
+                postRepo.findAllByCategory(category, pageable);
 
     }
 
@@ -52,10 +58,10 @@ public class PostService {
     }
 
     public List<Post> relatedPosts(int id){
-        String category = getPost(id).getCategory().getName();
+        String category = getPost(id).getCategory();
         return postRepo.findAll()
                 .stream()
-                .filter(x -> x.getCategory().getName().equals(category))
+                .filter(x -> x.getCategory().equals(category))
                 .limit(3)
                 .collect(Collectors.toList());
     }
