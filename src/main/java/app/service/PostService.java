@@ -65,4 +65,14 @@ public class PostService {
                 .limit(3)
                 .collect(Collectors.toList());
     }
+
+    public List<Post> searchResult(String title) {
+        return
+                postRepo
+                .findAll()
+                .stream()
+                .filter(x -> x.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .collect(Collectors.toList());
+
+    }
 }

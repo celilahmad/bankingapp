@@ -61,7 +61,7 @@
 				<div class="row">
 		    	 	<div class="col-md-3">
 						<div class="logo">
-						<a  href="index.html"><img class="img-responsive" src="/img/logo.png" alt=""></a>
+						<a  th:href="@{/}"><img class="img-responsive" src="/img/logo.png" alt=""></a>
 						</div><!--logo-->
 		    	 	</div><!--col-md-3-->
 		    	 	
@@ -73,15 +73,15 @@
 		    	 	
 		    	 	<div class="col-md-3">
 						<div class="social_icon1">
-								<a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>
+								<a href="http://www.facebook.com" class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>
 								<!--Twitter-->
-								<a class="icons-sm tw-ic"><i class="fa fa-twitter"></i></a>
+								<a href="http://www.twitter.com" class="icons-sm tw-ic"><i class="fa fa-twitter"></i></a>
 								<!--Google +-->
-								<a class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a>
+								<a href="http://www.instagram.com" class="icons-sm gplus-ic"><i class="fa fa-instagram"> </i></a>
 								<!--Linkedin-->
-								<a class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a> 
+								<a href="http://www.linkedin.com" class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
 								<!--Pinterest-->
-								<a class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a>
+								<a href="http://www.pinterest.com" class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a>
 						</div> <!--social_icon1-->
 		    	 	</div><!--col-md-3-->
 		    	</div> <!--row-->	
@@ -90,21 +90,21 @@
 
 		<nav class="navbar main-menu navbar-inverse navbar-static-top" role="navigation">
 			<div class="container">
-				<div class="navbar-header">
+				<!--<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed pull-left" data-toggle="offcanvas">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				</div>
+				</div>-->
 				<div id="navbar" class="collapse navbar-collapse sidebar-offcanvas">
 				<ul class="nav navbar-nav" th:each="category : ${categories}">
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll" th:href="${category.path}" th:text="${category.name}"></a></li>
 				</ul>
 				<div class="pull-right">
-					<form class="navbar-form" role="search" th:action="@{/search}">
+					<form class="navbar-form" role="search" th:action="@{/search}" method="post">
 						<div class="input-group">
 							<input class="form-control" placeholder="Search" name="search" type="text">
 							<div class="input-group-btn">
