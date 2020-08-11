@@ -3,6 +3,7 @@ package app.controller;
 import app.entity.Category;
 import app.entity.Post;
 import app.service.CategoryService;
+import app.service.CommentService;
 import app.service.PostService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -23,10 +24,12 @@ public class IndexController {
 
     private final CategoryService categoryService;
     private final PostService postService;
+    private final CommentService commentService;
 
-    public IndexController(CategoryService categoryService, PostService postService) {
+    public IndexController(CategoryService categoryService, PostService postService, CommentService commentService) {
         this.categoryService = categoryService;
         this.postService = postService;
+        this.commentService = commentService;
     }
 
     @RequestMapping("/")
@@ -48,7 +51,9 @@ public class IndexController {
         String date = localDateTime.format(formatter);
         List<Category> categories = categoryService.allCategory();
         List<Post> latestPosts = postService.latestPosts();
+        List<Post> mostComments = commentService.mostCommented();
 
+        model.addAttribute("mostComments", mostComments);
         model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("all", all);
         model.addAttribute("currentPage", currentPage);

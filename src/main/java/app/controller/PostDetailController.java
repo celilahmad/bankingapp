@@ -40,7 +40,9 @@ public class PostDetailController {
         Post post = postService.getPost(id);
         List<Post> latestPosts = postService.latestPosts();
         List<Comment> comments = commentService.postComments(id);
+        List<Post> mostComments = commentService.mostCommented();
 
+        model.addAttribute("mostComments", mostComments);
         model.addAttribute("comments", comments);
         model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("relatedPosts", relatedPosts);

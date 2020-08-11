@@ -3,6 +3,7 @@ package app.controller;
 import app.entity.Category;
 import app.entity.Post;
 import app.service.CategoryService;
+import app.service.CommentService;
 import app.service.PostService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,12 @@ public class CategoryController {
 
     private final CategoryService categoryService;
     private final PostService postService;
+    private final CommentService commentService;
 
-    public CategoryController(CategoryService categoryService, PostService postService) {
+    public CategoryController(CategoryService categoryService, PostService postService, CommentService commentService) {
         this.categoryService = categoryService;
         this.postService = postService;
+        this.commentService = commentService;
     }
 
     @RequestMapping("/{category}")
@@ -47,7 +50,9 @@ public class CategoryController {
         List<Post> all = page.getContent();
         List<Category> categories = categoryService.allCategory();
         List<Post> latestPosts = postService.latestPosts();
+        List<Post> mostComments = commentService.mostCommented();
 
+        model.addAttribute("mostComments", mostComments);
         model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("path", category);
         model.addAttribute("currentPage", currentPage);
