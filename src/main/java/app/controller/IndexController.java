@@ -47,7 +47,9 @@ public class IndexController {
         LocalDateTime localDateTime = LocalDateTime.now();
         String date = localDateTime.format(formatter);
         List<Category> categories = categoryService.allCategory();
+        List<Post> latestPosts = postService.latestPosts();
 
+        model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("all", all);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalItem", totalItem);

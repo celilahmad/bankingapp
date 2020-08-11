@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -24,17 +25,6 @@ public class PostService {
         this.postRepo = postRepo;
     }
 
-    public List<Post> postCategory(String category){
-        return
-                postRepo.findAll().stream()
-                        .filter(x -> x.getCategory().equals(category))
-                        .collect(Collectors.toList());
-    }
-
-    public List<Post> allNews(){
-        return
-                postRepo.findAll();
-    }
 
     public Page<Post> listAll(int pageNumber){
         //Sort sort = Sort.by("date").descending();
@@ -72,6 +62,14 @@ public class PostService {
                 .findAll()
                 .stream()
                 .filter(x -> x.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .collect(Collectors.toList());
+
+    }
+
+    public List<Post> latestPosts(){
+        return postRepo.findAll()
+                .stream().sorted(Comparator.comparingInt(Post::getId).reversed())
+                .limit(4)
                 .collect(Collectors.toList());
 
     }
