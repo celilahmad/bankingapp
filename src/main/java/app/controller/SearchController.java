@@ -32,6 +32,9 @@ public class SearchController {
         String date = localDateTime.format(formatter);
         List<Category> categories = categoryService.allCategory();
         List<Post> searchPost = postService.searchResult(title);
+        List<Post> latestPosts = postService.latestPosts();
+
+        model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("date", date);
         model.addAttribute("categories", categories);
         model.addAttribute("searchResult", searchPost);

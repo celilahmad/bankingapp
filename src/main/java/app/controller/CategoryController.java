@@ -46,6 +46,9 @@ public class CategoryController {
         List<Integer> listTotalPages = IntStream.rangeClosed(1, page.getTotalPages()).boxed().collect(Collectors.toList());
         List<Post> all = page.getContent();
         List<Category> categories = categoryService.allCategory();
+        List<Post> latestPosts = postService.latestPosts();
+
+        model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("path", category);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalItem", totalItem);

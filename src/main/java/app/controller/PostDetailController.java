@@ -28,6 +28,9 @@ public class PostDetailController {
         List<Category> categories = categoryService.allCategory();
         List<Post> relatedPosts = postService.relatedPosts(id);
         Post post = postService.getPost(id);
+        List<Post> latestPosts = postService.latestPosts();
+
+        model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("relatedPosts", relatedPosts);
         model.addAttribute("categories", categories);
         model.addAttribute("post", post);
