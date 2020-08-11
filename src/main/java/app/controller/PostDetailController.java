@@ -5,6 +5,7 @@ import app.entity.Comment;
 import app.entity.Post;
 import app.service.CategoryService;
 import app.service.CommentService;
+import app.service.EmailServiceImpl;
 import app.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,11 +23,13 @@ public class PostDetailController {
     private final CategoryService categoryService;
     private final PostService postService;
     private final CommentService commentService;
+    private final EmailServiceImpl emailService;
 
-    public PostDetailController(CategoryService categoryService, PostService postService, CommentService commentService) {
+    public PostDetailController(CategoryService categoryService, PostService postService, CommentService commentService, EmailServiceImpl emailService) {
         this.categoryService = categoryService;
         this.postService = postService;
         this.commentService = commentService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/detail/{id}")
@@ -52,9 +55,9 @@ public class PostDetailController {
                               @RequestParam("email") String email,
                               @RequestParam("comment") String comment){
 
-        //emailService.sendEmail(email, "Tech Blog", ("You have successfully commented\n\n" + comment));
+        emailService.send(email, "Sport news", ("You have successfully commented\n\n" + comment));
         String date = LocalDate.now().toString();
         commentService.saveComment(new Comment(fullName, email, comment, date, new Post(id)));
-        return "redirect:/detail/post/" + id;
+        return "redirect:/detail/" + id;
     }
 }
