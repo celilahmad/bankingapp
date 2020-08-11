@@ -106,9 +106,9 @@
                                     <li><a class="page-scroll" th:href="${categori.path}" th:text="${categori.name}"></a></li>
                                 </ul>
                                 <div class="pull-right">
-                                    <form class="navbar-form" role="search">
+                                    <form class="navbar-form" role="search" th:action="@{/search}">
                                         <div class="input-group">
-                                            <input class="form-control" placeholder="Search" name="q" type="text">
+                                            <input class="form-control" placeholder="Search" name="title" type="text">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                             </div>

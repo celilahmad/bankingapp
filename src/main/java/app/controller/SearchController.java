@@ -28,7 +28,7 @@ public class SearchController {
     }
 
 
-    @PostMapping
+    @GetMapping
     public String postSearch(@RequestParam("title") String title, Model model){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         LocalDateTime localDateTime = LocalDateTime.now();
