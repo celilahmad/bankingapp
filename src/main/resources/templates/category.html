@@ -103,7 +103,7 @@
 							<div id="navbar" class="collapse navbar-collapse sidebar-offcanvas">
 								<ul class="nav navbar-nav" th:each="categori : ${categories}">
 									<li class="hidden"><a href="#page-top" ></a></li>
-									<li><a class="page-scroll" th:href="${categori.path}" th:text="${categori.name}"></a></li>
+									<li><a class="page-scroll" th:href="@{'/category' + ${categori.path}}" th:text="${categori.name}"></a></li>
 								</ul>
 								<div class="pull-right">
 									<form class="navbar-form" role="search" th:action="@{/search}">

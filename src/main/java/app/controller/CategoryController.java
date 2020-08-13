@@ -31,12 +31,12 @@ public class CategoryController {
         this.commentService = commentService;
     }
 
-    @RequestMapping("/{category}")
+    @RequestMapping("/category/{category}")
     public String listCategory(Model model, @PathVariable("category") String category){
         return categoryPost(model, category, 1);
     }
 
-    @GetMapping("/{category}/page/{currentPage}")
+    @GetMapping("/category/{category}/page/{currentPage}")
     public String categoryPost(Model model,
                                @PathVariable("category") String category,
                                @PathVariable("currentPage") int currentPage){

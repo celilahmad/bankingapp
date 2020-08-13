@@ -17,6 +17,7 @@
 
     <!-- Owl carousel -->
     <link href="/css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/owl.theme.css" rel="stylesheet">
 
     <!-- Off Canvas Menu -->
     <link href="/css/offcanvas.min.css" rel="stylesheet">
@@ -40,7 +41,8 @@
             <div class="top_ber">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="top_ber_left" th:text="${date}">
+                        <div class="top_ber_left">
+                            20 August. Thursday 2015. 2:00 PM.
                         </div><!--top_ber_left-->
                     </div><!--col-md-6-->
                     <div class="col-md-6">
@@ -101,9 +103,9 @@
 
                             </div>
                             <div id="navbar" class="collapse navbar-collapse sidebar-offcanvas">
-                                <ul class="nav navbar-nav" th:each="categori : ${categories}">
-                                    <li class="hidden"><a href="#page-top" ></a></li>
-                                    <li><a class="page-scroll" th:href="@{'/category' + ${categori.path}}" th:text="${categori.name}"></a></li>
+                                <ul class="nav navbar-nav" th:each="category : ${categories}">
+                                    <li class="hidden"><a href="#page-top"></a></li>
+                                    <li><a class="page-scroll" th:href="${category.path}" th:text="${category.name}"></a></li>
                                 </ul>
                                 <div class="pull-right">
                                     <form class="navbar-form" role="search" th:action="@{/search}">
@@ -125,92 +127,21 @@
     </header>
 
     <!-- Feature Category Section & sidebar -->
-    <section id="feature_category_section" class="feature_category_section category_page section_wrapper">
+    <section id="feature_category_section" class="feature_category_section single-page section_wrapper">
         <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-6" th:each="post : ${searchResult}">
-                            <div class="feature_news_item">
-                                <div class="item">
-                                    <div class="item_wrapper">
-                                        <div class="item_img">
-                                            <img class="img-responsive" th:src="${post.img}" alt="Chania">
-                                        </div> <!--item_img-->
-                                        <div class="item_title_date">
-                                            <div class="news_item_title">
-                                                <h2><a th:href="@{'/detail/' + ${post.id}}" th:text="${post.title}"></a></h2>
-                                            </div>
-                                            <div class="item_meta"><a href="#" th:text="${post.date}"></a> / <a href="#" th:text="${post.author}"></a></div>
-                                        </div><!--item_title_date-->
-                                    </div> <!--item_wrapper-->
-                                    <div class="item_content" th:text="${post.header}">
-                                    </div>
+            <form th:action="@{/login}" method="post" class="form-login">
+                <input type="email" placeholder="Email" name="email" required><br><br>
+                <input type="password" placeholder="Password" name="password" required><br>
+                <p style="color: darkred" th:if="${param.error}" th:text="#{login.error}"></p>
+                <label class="login-section-container-options-checkbox-wrapper">Remember Me
+                    <input name="remember-me" type="checkbox" class="login-section-container-options-old-checkbox">
+                    <span class="login-section-container-options-checkmark"></span>
+                </label><br><br>
+                <button type="submit" class="btn btn-submit">Login</button>
+                <a href="registration" class="login-section-container-form-signup">Create account</a>
 
-                                </div><!--item-->
-                            </div><!--feature_news_item-->
-                        </div><!--col-md-6-->
 
-                    </div><!--row-->
-                </div><!--col-md-9-->
-
-                <div class="col-md-3">
-
-                    <div class="tab sitebar">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a  href="#1" data-toggle="tab">Latest</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="1">
-                                <div class="media" th:each="latest : ${latestPosts}">
-                                    <div class="media-left">
-                                        <a href="#"><img class="media-object-related" th:src="${latest.img}" alt="Generic placeholder image"></a>
-                                    </div><!--media-left-->
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a th:href="@{'/detail/' + ${latest.id}}" th:text="${latest.title}"></a></h4>
-                                    </div><!--media-body-->
-                                </div><!--media-->
-
-                            </div><!--tab-pane-->
-
-                        </div><!--tab-content-->
-                    </div><!--tab-->
-
-                    <div class="ad">
-                        <img class="img-responsive" src="/img/img-sitebar.jpg" alt="img" />
-                        <img class="img-responsive" src="/img/img-sitebar.jpg" alt="img" />
-                        <img class="img-responsive" src="/img/img-sitebar.jpg" alt="img" />
-                        <img class="img-responsive" src="/img/img-sitebar.jpg" alt="img" />
-                    </div><!--ad-->
-
-                    <div class="ad">
-                        <img class="img-responsive" src="/img/img-ad.jpg" alt="img" />
-                    </div>
-
-                    <div class="ad">
-                        <img class="img-responsive" src="/img/img-ad2.jpg" alt="img" />
-                    </div>
-
-                    <div class="most_comment">
-                        <div class="sidebar_title">
-                            <h2>Most Commented</h2>
-                        </div>
-                        <div class="media" th:each="mostComment : ${mostComments}">
-                            <div class="media-left">
-                                <a th:href="@{'/detail/' + ${mostComment.id}}"><img class="media-object-related" th:src="${mostComment.img}" alt="Generic placeholder image"></a>
-                            </div><!--media-left-->
-                            <div class="media-body">
-                                <h3 class="media-heading"><a th:href="@{'/detail/' + ${mostComment.id}}" th:text="${mostComment.title}"></a></h3>
-                                <div class="comment_box">
-                                    <div class="comments_icon"> <i class="fa fa-comments" aria-hidden="true"></i></div>
-                                    <div class="comments"><a href="#">9 Comments</a></div>
-                                </div><!--comment_box-->
-                            </div><!--media-body-->
-                        </div><!--media-->
-                    </div><!--most_comment-->
-                </div>
-            </div>
+            </form>
         </div>
     </section><!--feature_category_section-->
 
@@ -321,6 +252,7 @@
 
 <!-- Off Canvas Menu -->
 <script src="/js/offcanvas.min.js"></script>
+
 
 </body>
 </html>
