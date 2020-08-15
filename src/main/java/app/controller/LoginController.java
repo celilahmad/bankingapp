@@ -28,11 +28,16 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping
+
+    /*@PostMapping
     public String postLogin(@RequestParam("email") String email,
                             @RequestParam("password") String password){
+        if (userService.isValid(email, password)){
+            return "index";
+        }else{
+            return "login";
+        }
 
 
-        return "index";
-    }
+    }*/
 }

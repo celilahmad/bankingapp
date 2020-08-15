@@ -129,7 +129,7 @@
     <!-- Feature Category Section & sidebar -->
     <section id="feature_category_section" class="feature_category_section single-page section_wrapper">
         <div class="container">
-            <form th:action="@{/login}" method="post" class="form-login">
+            <form method="post" class="form-login">
                 <input type="email" placeholder="Email" name="email" required><br><br>
                 <input type="password" placeholder="Password" name="password" required><br>
                 <p style="color: darkred" th:if="${param.error}" th:text="#{login.error}"></p>

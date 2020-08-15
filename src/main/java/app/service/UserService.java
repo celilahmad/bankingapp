@@ -29,4 +29,7 @@ public class UserService {
         return byEmail != null && email.equals(byEmail.getUsername());
     }
 
+    public boolean isValid(String email, String password) {
+        return userRepo.findByEmailAndPassword(email, password);
+    }
 }

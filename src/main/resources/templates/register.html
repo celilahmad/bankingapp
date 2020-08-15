@@ -129,12 +129,31 @@
     <!-- Feature Category Section & sidebar -->
     <section id="feature_category_section" class="feature_category_section single-page section_wrapper">
         <div class="container">
-            <form th:action="@{/register}" method="post" class="form-login">
-                <input type="text" placeholder="Full Name" name="fullName" required><br><br>
-                <input type="email" placeholder="Email" name="email" required><br><br>
-                <input type="password" placeholder="Password" name="password" required><br>
-                <p style="color: darkred" th:if="${param.error}" th:text="#{login.error}"></p>
-                <button type="submit" class="btn btn-submit">Login</button>
+            <form th:modelAttribute="user" th:action="@{/register}" method="post" class="form-login" th:object="${user}">
+                <input th:field="*{fullName}" type="text" placeholder="Full Name" name="fullName" required>
+                <div>
+                    <p style="color: darkred" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name
+                        Error</p>
+                </div>
+                <br><br>
+                <input th:field="*{email}" type="email" placeholder="Email" name="email" required>
+                <div>
+                    <p style="color: darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name
+                        Error</p>
+                </div>
+                <div  >
+                    <p style="color: darkred" th:if="${param.emailError}" th:text="${param.emailError}">Name
+                        Error</p>
+                </div>
+                <br><br>
+                <input th:field="*{password}" type="password" placeholder="Password" name="password" required>
+                <div>
+                    <p style="color: darkred" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name
+                        Error</p>
+                </div>
+                <br>
+                <!--<p style="color: darkred" th:if="${param.error}" th:text="#{login.error}"></p>-->
+                <button type="submit" class="btn btn-submit">Register</button>
 
 
             </form>

@@ -47,10 +47,12 @@
 		    		<div class="col-md-6">
 		    			<div class="top_ber_right">
 		    				<div class="top-menu">
-		    					<ul class="nav navbar-nav">    
+		    					<ul class="nav navbar-nav" th:if="${name == null}">
 			                        <li><a th:href="@{/login}">Login</a></li>
 			                        <li><a th:href="@{/register}">Register</a></li>
 	                    		</ul>
+								<span th:unless="${name == null}">welcome</span>
+
 		    				</div><!--top-menu-->
 		    			</div><!--top_ber_left-->
 		    		</div><!--col-md-6-->

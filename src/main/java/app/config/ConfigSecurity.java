@@ -15,7 +15,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/css/**", "/fonts/**", "/img/**", "/js/**",
-                        "/index", "/detail/**", "/search")
+                        "/", "/detail/**", "/search")
                 .permitAll()
                 //.anyRequest().authenticated()
                 .and()

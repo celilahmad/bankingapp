@@ -6,6 +6,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,11 +21,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank(message = "Full name is empty")
     private String fullName;
 
+    @NotBlank(message = "Email is empty")
     @Column(unique = true)
     private String email;
 
+    @Size(message = "Minimum 3 character", min = 3)
     private String password;
 
     @Transient
