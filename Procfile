@@ -1,0 +1,1 @@
+web: java -jar target/sport-news-1.0-SNAPSHOT.jar
