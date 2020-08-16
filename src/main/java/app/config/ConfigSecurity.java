@@ -14,26 +14,8 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/css/**", "/fonts/**", "/img/**", "/js/**",
-                        "/", "/detail/**", "/search")
+                .antMatchers("/css/**", "/fonts/**", "/img/**", "/js/**")
                 .permitAll()
-                //.anyRequest().authenticated()
-                .and()
-
-                .formLogin()
-                .loginPage("/login")
-                .usernameParameter("email")
-                .successForwardUrl("/")
-                .failureUrl("/login?error")
-
-                .and()
-                .logout()
-                .deleteCookies("JSESSIONID")
-
-                .and()
-                .rememberMe().
-                key("uniqueAndSecret").rememberMeParameter("remember-me")
-
                 .and()
                 .csrf().disable();
     }

@@ -2,21 +2,16 @@ package app.controller;
 
 import app.entity.Category;
 import app.entity.Post;
-import app.entity.User;
 import app.service.CategoryService;
 import app.service.CommentService;
 import app.service.PostService;
-import app.service.UserService;
 import org.springframework.data.domain.Page;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -58,12 +53,7 @@ public class IndexController {
         List<Category> categories = categoryService.allCategory();
         List<Post> latestPosts = postService.latestPosts();
         List<Post> mostComments = commentService.mostCommented();
-        //String name = principal.getName();
-        //Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        //Object principal = auth.getPrincipal();
 
-
-        //model.addAttribute("name", principal.getFullName());
         model.addAttribute("mostComments", mostComments);
         model.addAttribute("latestPosts", latestPosts);
         model.addAttribute("all", all);

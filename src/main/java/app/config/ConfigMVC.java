@@ -10,19 +10,6 @@ import java.util.Arrays;
 @Configuration
 public class ConfigMVC implements WebMvcConfigurer {
 
-    private static final String[][] mappings = {
-            { "/",                "index"           },
-            { "/registration",    "registration"    },
-            { "/login",           "login"           },
-            { "/detail/",         "detail"          },
-            { "/category/",       "category"        },
-            { "/search",          "search"          }
-    };
-
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        Arrays.stream(mappings).forEach(m -> registry.addViewController(m[0]).setViewName(m[1]));
-    }
 
 
     @Override

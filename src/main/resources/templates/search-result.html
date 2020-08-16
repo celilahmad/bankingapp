@@ -43,16 +43,7 @@
                         <div class="top_ber_left" th:text="${date}">
                         </div><!--top_ber_left-->
                     </div><!--col-md-6-->
-                    <div class="col-md-6">
-                        <div class="top_ber_right">
-                            <div class="top-menu">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Register</a></li>
-                                </ul>
-                            </div><!--top-menu-->
-                        </div><!--top_ber_left-->
-                    </div><!--col-md-6-->
+
                 </div><!--row-->
             </div><!--top_ber-->
 
@@ -184,9 +175,6 @@
                         <img class="img-responsive" src="/img/img-sitebar.jpg" alt="img" />
                     </div><!--ad-->
 
-                    <div class="ad">
-                        <img class="img-responsive" src="/img/img-ad.jpg" alt="img" />
-                    </div>
 
                     <div class="ad">
                         <img class="img-responsive" src="/img/img-ad2.jpg" alt="img" />
@@ -221,66 +209,39 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="text_widget footer_widget">
-                            <div class="footer_widget_title"><h2>About Sports Mag</h2></div>
+                            <div class="footer_widget_title"><h2>About Sports News</h2></div>
 
-                            <div class="footer_widget_content">Collaborativelyadministrate empowered marketsplug-and-play networks. Dynamic procrastinate after.marketsplug-and-play networks. Dynamic procrastinate users after. Dynamic procrastinateafter. marketsplug-and-play networks. Dynamic procrastinate users after...
+                            <div class="footer_widget_content">Sport-News is sharing latest news at different category of sports. It was built with Java & Spring Boot. Used technology for backend is Java, Maven, Spring Boot, Java Mail, Mysql, Thymleaf, Lombok.
                             </div>
                         </div><!--text_widget-->
                     </div><!--col-xs-3-->
-
                     <div class="col-md-6">
-                        <div class="footer_widget">
-                            <div class="footer_widget_title"><h2>Discover</h2></div>
+                        <div class="footer_widget footer-discover">
+                            <div class="footer_widget_title "><h2>Discover</h2></div>
                             <div class="footer_menu_item ">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <ul class="nav navbar-nav ">
-                                            <li><a href="../navbar/">Baseball</a></li>
-                                            <li><a href="../navbar-static-top/">Football</a></li>
-                                            <li><a href="./">Cricket</a></li>
-                                            <li><a href="../navbar/">Rugbi</a></li>
-                                            <li><a href="../navbar/">Hockey</a></li>
-                                            <li><a href="../navbar-static-top/">Boxing</a></li>
-                                            <li><a href="./">Golf</a></li>
-                                            <li><a href="../navbar/">Tennis</a></li>
-                                            <li><a href="../navbar/">Horse Racing</a></li>
+                                <div class="row" th:each="category : ${categories}">
+
+                                    <div class="col-sm-4" >
+                                        <ul class="nav navbar-nav" >
+                                            <li><a th:href="@{'/category' + ${category.path}}" th:text="${category.name}"></a></li>
                                         </ul>
                                     </div><!--col-sm-4-->
-                                    <div class="col-sm-4 ">
-                                        <ul class="nav navbar-nav  ">
-                                            <li><a href="../navbar/">Track & Field</a></li>
-                                            <li><a href="../navbar-static-top/">MembershipContact us</a></li>
-                                            <li><a href="./">Newsletter Alerts</a></li>
-                                            <li><a href="../navbar/">Podcast</a></li>
-                                            <li><a href="../navbar/">Blog</a></li>
-                                            <li><a href="../navbar-static-top/">SMS Subscription</a></li>
-                                            <li><a href="./">Advertisement Policy</a></li>
-                                            <li><a href="../navbar/">Jobs</a></li>
-                                        </ul>
-                                    </div><!--col-sm-4-->
-                                    <div class="col-sm-4">
-                                        <ul class="nav navbar-nav ">
-                                            <li><a href="../navbar/">Report technical issue</a></li>
-                                            <li><a href="../navbar-static-top/">Complaints & Corrections</a></li>
-                                            <li><a href="./">Terms & Conditions</a></li>
-                                            <li><a href="../navbar-static-top/">Privacy Policy</a></li>
-                                            <li><a href="./">Cookie Policy</a></li>
-                                            <li><a href="../navbar/">Securedrop</a></li>
-                                            <li><a href="../navbar/">Archives</a></li>
-                                        </ul>
-                                    </div><!--col-sm-4-->
+
                                 </div><!--row-->
                             </div><!--footer_menu_item-->
                         </div><!--footer_widget-->
                     </div><!--col-xs-6-->
 
-                    <div class="col-md-3">
-                        <div class="text_widget footer_widget">
-                            <div class="footer_widget_title"><h2>Editor’s Message</h2></div>
-                            <img src="/img/img-author.jpg" />
-                            <div class="footer_widget_content">Collaborativelyadministrate empowered marketsplug-and-play networks. Dynamic procrastinate after.marketsplug-and-play networks. Dynamic procrastinate users after. Dynamic procrastinateafter. marketsplug-and-play networks. Dynamic procrastinate users after...</div>
-                        </div>
-                    </div><!--col-xs-3-->
+
+                    <div class="text_widget footer_widget">
+                        <div class="footer_widget_title"><h2>Editor’s Message</h2></div>
+                        <img src="/img/profile.jpg" class="profile"/>
+                        <div class="footer_widget_content">Jalil Ahmadov. Java back-end developer.
+                            Graduated Baku Engineering University as a bachelor.
+                            Recently graduated IBA-Tech Academy (Back-end Java developer) course.
+                            Sport news is my second project.
+                            My first project was <a class="portfolio" href="https://jdk-techblog.herokuapp.com/">Tech-Blog</a></div>
+                    </div>
                 </div><!--row-->
             </div><!--container-->
         </div><!--footer_top_section-->
